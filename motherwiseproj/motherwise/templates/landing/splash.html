@@ -1,0 +1,153 @@
+{% extends 'landing/base.html' %}
+{% block title %}Welcome to VaCay!{% endblock %}
+{% block body %}
+
+<style>
+
+html, body{
+  background:linear-gradient(0deg,rgba(0,0,0,0.9),rgba(0,0,0,0.9)), url('/static/images/111.jpg') no-repeat center center fixed;
+  background-size:cover;
+}
+
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-width:500px;
+    width:auto;
+    height:auto;
+    overflow: hidden;
+    transform: translate(-50%, -50%);
+}
+
+#progress {
+  width: 100%;
+  background-color: black;
+  display:none;
+}
+
+#progressBar {
+  width: 1%;
+  height: 5px;
+  border-radius:2.5px;
+  background-color: red;
+}
+
+</style>
+
+<script>
+	history.pushState(null, null, location.href);
+    history.back();
+    history.forward();
+    window.onpopstate = function () { history.go(1); };
+</script>
+
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<img src="/static/images/processing.gif" class="glyphicon glyphicon-fire" aria-hidden="true" style="position:fixed; left:50%; float:middle; border-radius: 1px;
+	transform:translate(-50%, -50%); width:80px; z-index:100; top:120px; display: none;" id="gif">
+
+<div class="centered">
+    <img src="/static/images/vacaylogo.jpg" style="width:100%;">
+</div>
+
+<div id="progress">
+  <div id="progressBar"></div>
+</div>
+
+<script>
+
+var delayInMilliseconds = 1000; //1 second
+
+setTimeout(function() {
+  //your code to be executed after 1 second
+  document.getElementById('progress').style.display = 'block';
+  move();
+}, delayInMilliseconds);
+
+var i = 0;
+function move() {
+  if (i == 0) {
+    i = 1;
+    var elem = document.getElementById("progressBar");
+    var width = 1;
+    var id = setInterval(frame, 30);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+        i = 0;
+      } else {
+        width++;
+        elem.style.width = width + "%";
+        if (width == 80){
+            window.location.href = '/main';
+            return;
+        }
+      }
+    }
+  }
+}
+</script>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
